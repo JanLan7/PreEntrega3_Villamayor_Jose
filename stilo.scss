@@ -1,0 +1,147 @@
+
+$font-family: Arial, Helvetica, sans-serif;
+$background-color: #f4f4f4;
+$text-color: #333;
+$header-bg-color: black;
+$header-text-color: white;
+$link-hover-decoration: underline;
+$container-max-width: 1200px;
+$padding-default: 20px;
+$margin-bottom-default: 20px;
+$theme: dark; // 
+$link-hover-color: blue; //
+
+
+@mixin container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $padding-default;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@if $theme == dark {
+    $background-color: #333;
+    $text-color: #f4f4f4;
+    $header-bg-color: #000;
+    $header-text-color: #fff;
+    $link-hover-color: lightblue; 
+} @else if $theme == light {
+    $background-color: #f4f4f4;
+    $text-color: #333;
+    $header-bg-color: #fff;
+    $header-text-color: #000;
+    $link-hover-color: darkblue; 
+}
+
+
+body {
+    font-family: $font-family;
+    background-color: $background-color;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: $header-bg-color;
+    color: $header-text-color;
+    padding: $padding-default 0;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav {
+    .navbar-nav {
+        margin: 0 auto;
+    }
+
+    a {
+        color: $header-text-color;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease, font-size 0.3s ease, background-color 0.3s ease;
+
+        &:hover {
+            text-decoration: $link-hover-decoration;
+            color: $link-hover-color; 
+            font-size: 1.1em; 
+            background-color: rgba(0, 0, 0, 0.1); 
+        }
+    }
+}
+
+main {
+    text-align: center;
+    padding: 50px 20px;
+    margin-bottom: 100px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    img {
+        border-radius: 8px;
+    }
+
+    .container-fluid {
+        @include container;
+    }
+
+    .row {
+        @include flex-center;
+    }
+
+    .col-12, .col-md-10 {
+        text-align: left;
+    }
+
+    .h2 {
+        font-size: 2em;
+        margin-bottom: $margin-bottom-default;
+    }
+
+    .lead {
+        font-size: 1.25em;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto $margin-bottom-default auto;
+    }
+}
+
+footer {
+    background-color: $header-bg-color;
+    color: $header-text-color;
+    padding: $padding-default 0;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    a {
+        color: $header-text-color;
+        text-decoration: none;
+        transition: color 0.3s ease, font-size 0.3s ease, background-color 0.3s ease;
+
+        &:hover {
+            text-decoration: $link-hover-decoration;
+            color: $link-hover-color; 
+            font-size: 1.1em; 
+            background-color: rgba(0, 0, 0, 0.1); 
+        }
+    }
+
+    .container {
+        @include container;
+    }
+
+    .row {
+        @include flex-center;
+    }
+
+    .col-md-4 {
+        margin-bottom: 20px;
+    }
+}
